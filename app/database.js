@@ -2,6 +2,83 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var initialData = {
+  // The "user" collection. Contains all of the users in our Facebook system.
+  "users": {
+    // This user has id "1"
+    "1": {
+      "_id": 1,
+      "fullname": "Someone",
+      "feed": 1
+    }
+    "2": {
+      "_id": 2,
+      "fullName": "Someone Else",
+      "feed":2
+    }
+    "3": {
+      "_id": 3,
+      "fullName": "Another Person",
+      "feed": 3
+    }
+    // This is "you"!
+    "4": {
+      "_id": 4,
+      "fullName": "James Coyne",
+      "feed": 4
+    }
+  },
+  // The 'freedItems' collection. Contails all of the feed items on our Facebook system
+  "feedItems": {
+    "1": {
+      "_id": 1,
+      // A list of users that liked the post. Here, "Someone Else" and "Another Person" liked this particular Post
+      "likeCounter": {
+        2, 3
+      },
+      // The type and contents of this feed item. This item happens to be a status update
+      "type": "statusUpdate",
+      "contents" {
+        // ID of the user that posted the status update.
+        "author": 1,
+        // 01/24/16 3:48PM EST, converted to Unix Time
+        // (# of milliseconds since Jan 1 1970 UTC)
+        // https://en.wikipedia.org/wiki/Unix_time
+        "postDate": 1453668480000,
+        "location": "Austin, TX",
+        "contents": "ugh."
+      },
+      "comments": [
+        {
+          "author": 2,
+          "contents": "hope everything is ok!",
+          "postDate": 1453690800000
+        },
+        {
+          "author": 3,
+          "contents": "sending hugs your way",
+          "postDate": 1453790800000
+        }
+      ]
+    }
+  },
+  "feeds": {
+    "4": {
+      "_id": 4,
+      "contents": [1]
+    },
+    "3": {
+      "_id": 3,
+      "contents": []
+    },
+    "2": {
+      "_id": 2,
+      "contents": []
+    },
+    "1": {
+      "_id": 1,
+      "contents": []
+    }
+  }
 };
 
 var data = JSON.parse(localStorage.getItem('facebook_data'));
