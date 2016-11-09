@@ -9,17 +9,17 @@ var initialData = {
       "_id": 1,
       "fullname": "Someone",
       "feed": 1
-    }
+    },
     "2": {
       "_id": 2,
       "fullName": "Someone Else",
       "feed":2
-    }
+    },
     "3": {
       "_id": 3,
       "fullName": "Another Person",
       "feed": 3
-    }
+    },
     // This is "you"!
     "4": {
       "_id": 4,
@@ -32,12 +32,12 @@ var initialData = {
     "1": {
       "_id": 1,
       // A list of users that liked the post. Here, "Someone Else" and "Another Person" liked this particular Post
-      "likeCounter": {
+      "likeCounter": [
         2, 3
-      },
+      ],
       // The type and contents of this feed item. This item happens to be a status update
       "type": "statusUpdate",
-      "contents" {
+      "contents": {
         // ID of the user that posted the status update.
         "author": 1,
         // 01/24/16 3:48PM EST, converted to Unix Time
