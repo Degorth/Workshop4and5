@@ -7,7 +7,7 @@ var initialData = {
     // This user has id "1"
     "1": {
       "_id": 1,
-      "fullname": "Someone",
+      "fullName": "Someone",
       "feed": 1
     },
     "2": {
