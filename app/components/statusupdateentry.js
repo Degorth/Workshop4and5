@@ -1,6 +1,30 @@
 import React from 'react';
 
 export default class StatusUpdateEntry extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
+
+  //Called when user clicks post button
+  handlePost(e) {
+    e.preventDefault();
+    var statusUpdateText = this.state.value.trim();
+    if (statusUpdateText !== "") {
+      this.props.onPost(statusUpdateText);
+      this.setState({value: ""});
+    }
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    //e.target is React Virtual DOM target of the input event
+    //The <textarea> element. The value is the entire contents of what's been typed
+    this.setState({value: e.target.value});
+  }
+
   render() {
     return (
       <div className="fb-status-update-entry panel panel-default">
@@ -28,8 +52,11 @@ export default class StatusUpdateEntry extends React.Component {
             </div>
             <div className="media-body">
               <div className="form-group">
-                <textarea className="form-control" rows="2" placeholder="What's on your mind?">
-                </textarea>
+                <textarea className="form-control"
+                  rows="2"
+                  placeholder="What's on your mind?"
+                  value={this.state.value}
+                  onChange={(e) => this.handleChange(e)} />
               </div>
             </div>
           </div>
@@ -56,7 +83,9 @@ export default class StatusUpdateEntry extends React.Component {
                   <span className="glyphicon glyphicon-user"></span>
                   Friends <span className="caret"></span>
                 </button>
-                <button type="button" className="btn btn-default">
+                <button type="button"
+                  className="btn btn-default"
+                  onClick={(e) => this.handlePost(e)}>
                   Post
                 </button>
               </div>
